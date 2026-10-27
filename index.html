@@ -1,0 +1,1311 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090914">
+  <meta name="description" content="Portafolio profesional de Jashiel Jimenez: desarrollo web, programación y tecnología.">
+  <title>NEXORA AI | Jashiel Jimenez</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Iconos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #090914;
+      --bg2: #101024;
+      --card: rgba(20, 22, 45, .82);
+      --text: #f5f5ff;
+      --muted: #b3b5d0;
+      --accent: #9b72ff;
+      --accent2: #35e7d4;
+      --border: rgba(155, 114, 255, .3);
+      --shadow: 0 12px 35px rgba(0, 0, 0, .25);
+      --nav: rgba(9, 9, 20, .9);
+    }
+
+    body.light {
+      --bg: #f5f4ff;
+      --bg2: #eae8fb;
+      --card: rgba(255, 255, 255, .91);
+      --text: #19162d;
+      --muted: #5e5a76;
+      --accent: #7044db;
+      --accent2: #087f79;
+      --border: rgba(112, 68, 219, .24);
+      --shadow: 0 12px 35px rgba(50, 30, 100, .1);
+      --nav: rgba(245, 244, 255, .94);
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background .3s, color .3s;
+      overflow-x: hidden;
+    }
+
+    #matrix {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: .16;
+      pointer-events: none;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 10% 10%, rgba(119, 70, 255, .13), transparent 40%),
+        radial-gradient(ellipse at 90% 50%, rgba(53, 231, 212, .08), transparent 40%);
+    }
+
+    a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    .navbar {
+      background: var(--nav);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar-brand {
+      color: var(--text) !important;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .brand-accent {
+      color: var(--accent2);
+    }
+
+    .navbar .nav-link {
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 600;
+      margin: 0 4px;
+    }
+
+    .navbar .nav-link:hover {
+      color: var(--accent2);
+    }
+
+    .navbar-toggler {
+      border-color: var(--border);
+    }
+
+    .navbar-toggler-icon {
+      filter: invert(1);
+    }
+
+    body.light .navbar-toggler-icon {
+      filter: none;
+    }
+
+    .theme-button {
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      color: var(--text);
+      background: var(--card);
+      padding: 7px 12px;
+    }
+
+    .section {
+      padding: 95px 0;
+      scroll-margin-top: 72px;
+    }
+
+    .section-heading {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .section-heading span {
+      color: var(--accent2);
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 42px;
+    }
+
+    .hero {
+      min-height: 94vh;
+      display: flex;
+      align-items: center;
+      padding-top: 110px;
+    }
+
+    .eyebrow {
+      color: var(--accent2);
+      font-family: 'Orbitron', sans-serif;
+      font-size: .83rem;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.7rem);
+      font-weight: 800;
+      line-height: 1.14;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+      max-width: 620px;
+    }
+
+    .button-primary,
+    .button-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .button-primary {
+      color: #0b0b17;
+      background: linear-gradient(110deg, var(--accent2), #b6fff5);
+      border: none;
+    }
+
+    .button-primary:hover {
+      color: #0b0b17;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(53, 231, 212, .2);
+    }
+
+    .button-outline {
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .button-outline:hover {
+      color: var(--accent2);
+      border-color: var(--accent2);
+      transform: translateY(-3px);
+    }
+
+    /* FOTO DE PERFIL: RUTA Y DIMENSIONES CORREGIDAS */
+    .profile-wrapper {
+      width: 100%;
+      max-width: 365px;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    .profile-frame {
+      position: relative;
+      width: 100%;
+      height: 430px;
+      padding: 8px;
+      border: 1px solid var(--accent);
+      border-radius: 24px;
+      background: linear-gradient(145deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 45px rgba(155, 114, 255, .22);
+      transform: rotate(2deg);
+    }
+
+    .profile-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      border-radius: 18px;
+      transform: rotate(-2deg);
+      background: var(--bg2);
+    }
+
+    .profile-label {
+      position: absolute;
+      bottom: 22px;
+      left: -14px;
+      padding: 12px 17px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      transform: rotate(-2deg);
+    }
+
+    .profile-label strong {
+      display: block;
+      color: var(--accent2);
+    }
+
+    .profile-label small {
+      color: var(--muted);
+    }
+
+    .glass-card {
+      height: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      transition: transform .25s, border-color .25s;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent2);
+    }
+
+    .about-text {
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .info-item {
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-item:last-child {
+      border-bottom: 0;
+    }
+
+    .info-item strong {
+      color: var(--accent2);
+      margin-right: 8px;
+    }
+
+    .tech-icon {
+      font-size: 2rem;
+      color: var(--accent2);
+      margin-bottom: 12px;
+    }
+
+    .tech-name {
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .tech-level {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .project-image {
+      display: block;
+      width: 100%;
+      height: 215px;
+      object-fit: cover;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-content {
+      padding: 23px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .project-content h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 12px 0 20px;
+    }
+
+    .project-tag {
+      font-size: .76rem;
+      padding: 6px 10px;
+      color: var(--accent2);
+      background: rgba(53, 231, 212, .08);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .project-actions a {
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    .filter-button {
+      padding: 8px 16px;
+      margin: 4px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--card);
+    }
+
+    .filter-button.active,
+    .filter-button:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .experience-date {
+      color: var(--accent2);
+      font-size: .86rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .experience-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .experience-card p,
+    .experience-card li {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-title {
+      margin-top: 15px;
+      font-weight: 700;
+    }
+
+    .contact-icon {
+      width: 45px;
+      height: 45px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: var(--accent2);
+      background: rgba(53, 231, 212, .1);
+      font-size: 1.3rem;
+    }
+
+    .contact-line {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .contact-line strong {
+      display: block;
+    }
+
+    .contact-line span {
+      color: var(--muted);
+      font-size: .9rem;
+      overflow-wrap: anywhere;
+    }
+
+    .form-control {
+      padding: 12px 14px;
+      color: var(--text);
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .form-control:focus {
+      color: var(--text);
+      background: var(--bg2);
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 3px rgba(53, 231, 212, .1);
+    }
+
+    .form-control::placeholder {
+      color: var(--muted);
+      opacity: .8;
+    }
+
+    .form-label {
+      font-weight: 600;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .social-link {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin: 5px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--card);
+      font-size: 1.15rem;
+      transition: .2s;
+    }
+
+    .social-link:hover {
+      color: var(--accent2);
+      border-color: var(--accent2);
+      transform: translateY(-3px);
+    }
+
+    .back-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 100;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      color: #0b0b17;
+      background: var(--accent2);
+      font-size: 1.2rem;
+      display: grid;
+      place-items: center;
+    }
+
+    .hidden-project {
+      display: none !important;
+    }
+
+    .footer-brand {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--accent2);
+      font-weight: 800;
+    }
+
+    @media (max-width: 767px) {
+      .section {
+        padding: 70px 0;
+      }
+
+      .hero {
+        padding-top: 110px;
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .profile-wrapper {
+        max-width: 290px;
+        margin-top: 45px;
+      }
+
+      .profile-frame {
+        height: 350px;
+      }
+
+      .profile-label {
+        left: -5px;
+      }
+
+      .navbar-collapse {
+        padding: 15px 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="matrix" aria-hidden="true"></canvas>
+
+  <!-- NAVEGACIÓN -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#inicio">
+        NEXORA<span class="brand-accent"> AI</span>
+      </a>
+
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+        aria-controls="menuPrincipal" aria-expanded="false"
+        aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tecnologias">Tecnologías</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>
+          <li class="nav-item"><a class="nav-link" href="#videos">Videos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <button class="theme-button" id="themeToggle" type="button"
+              aria-label="Cambiar tema">
+              <i class="bi bi-sun-fill" id="themeIcon"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- INICIO -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <div class="eyebrow">PORTAFOLIO WEB PROFESIONAL</div>
+            <h1>
+              Hola, soy<br>
+              <span class="gradient-text">Jashiel Jimenez</span>
+            </h1>
+            <h2 class="h4 mb-4">Estudiante de Ingeniería en Sistemas</h2>
+            <p class="hero-description">
+              Me interesa la programación, el desarrollo web y la tecnología.
+              Este espacio reúne mis prácticas académicas, proyectos y mi
+              proceso de aprendizaje en el mundo digital.
+            </p>
+            <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center justify-content-lg-start">
+              <a class="button-primary" href="#proyectos">
+                <i class="bi bi-code-slash"></i> Ver mis proyectos
+              </a>
+              <a class="button-outline" href="#contacto">
+                <i class="bi bi-envelope"></i> Contactarme
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="profile-wrapper">
+              <div class="profile-frame">
+                <!-- IMPORTANTE: la imagen debe estar en img/perfilj.jpg -->
+                <img
+                  class="profile-photo"
+                  src="./img/perfilj.jpg"
+                  alt="Fotografía de perfil de Jashiel Jimenez"
+                  onerror="this.onerror=null; this.style.objectFit='contain'; this.alt='No se pudo cargar la fotografía. Revisa la carpeta img y el nombre perfilj.jpg'; this.style.padding='20px'; this.style.border='2px dashed var(--accent2)';">
+              </div>
+              <div class="profile-label">
+                <strong><i class="bi bi-stars"></i> En constante aprendizaje</strong>
+                <small>Programación · Tecnología · Creatividad</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section class="section" id="sobre-mi">
+      <div class="container">
+        <div class="text-center">
+          <div class="eyebrow">CONÓCEME</div>
+          <h2 class="section-heading">Sobre <span>mí</span></h2>
+          <p class="section-subtitle">Mi formación, mis intereses y mis objetivos.</p>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-7">
+            <div class="glass-card">
+              <h3 class="h4 mb-3">¿Quién soy?</h3>
+              <p class="about-text">
+                Soy Jashiel Jimenez, estudiante de Ingeniería en Sistemas.
+                Estoy desarrollando mis conocimientos en programación,
+                aplicaciones, páginas web y herramientas tecnológicas.
+              </p>
+              <p class="about-text">
+                Considero que aprender tecnología requiere práctica,
+                paciencia y curiosidad. Por eso utilizo mis proyectos
+                académicos para experimentar, aprender de los errores y
+                mejorar poco a poco mis habilidades.
+              </p>
+              <p class="about-text mb-0">
+                Mi objetivo es seguir creciendo profesionalmente y construir
+                soluciones digitales útiles, funcionales y visualmente atractivas.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="glass-card">
+              <h3 class="h4 mb-3">Información personal</h3>
+              <div class="info-item"><strong>Nombre:</strong> Jashiel Jimenez</div>
+              <div class="info-item"><strong>Formación:</strong> Ingeniería en Sistemas</div>
+              <div class="info-item"><strong>Área:</strong> Tecnología y desarrollo</div>
+              <div class="info-item"><strong>Intereses:</strong> Web, aplicaciones y programación</div>
+              <div class="info-item"><strong>Meta:</strong> Crecer como profesional de tecnología</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECNOLOGÍAS -->
+    <section class="section" id="tecnologias">
+      <div class="container">
+        <div class="text-center">
+          <div class="eyebrow">HERRAMIENTAS Y APRENDIZAJE</div>
+          <h2 class="section-heading">Mis <span>tecnologías</span></h2>
+          <p class="section-subtitle">Tecnologías que utilizo o estoy aprendiendo.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="glass-card text-center">
+              <i class="bi bi-filetype-html tech-icon"></i>
+              <div class="tech-name">HTML5</div>
+              <div class="tech-level">Estructura web</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="glass-card text-center">
+              <i class="bi bi-filetype-css tech-icon"></i>
+              <div class="tech-name">CSS3</div>
+              <div class="tech-level">Diseño y estilos</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="glass-card text-center">
+              <i class="bi bi-filetype-js tech-icon"></i>
+              <div class="tech-name">JavaScript</div>
+              <div class="tech-level">Interactividad web</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="glass-card text-center">
+              <i class="bi bi-bootstrap tech-icon"></i>
+              <div class="tech-name">Bootstrap</div>
+              <div class="tech-level">Diseño adaptable</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="glass-card text-center">
+              <i class="bi bi-code-square tech-icon"></i>
+              <div class="tech-name">C# y .NET MAUI</div>
+              <div class="tech-level">Prácticas de aplicaciones</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="glass-card text-center">
+              <i class="bi bi-git tech-icon"></i>
+              <div class="tech-name">GitHub</div>
+              <div class="tech-level">Código y publicación web</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="glass-card text-center">
+              <i class="bi bi-terminal tech-icon"></i>
+              <div class="tech-name">Linux</div>
+              <div class="tech-level">Entorno de aprendizaje</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="glass-card text-center">
+              <i class="bi bi-cpu tech-icon"></i>
+              <div class="tech-name">Inteligencia artificial</div>
+              <div class="tech-level">Apoyo al aprendizaje</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section class="section" id="proyectos">
+      <div class="container">
+        <div class="text-center">
+          <div class="eyebrow">MI TRABAJO</div>
+          <h2 class="section-heading">Mis <span>proyectos</span></h2>
+          <p class="section-subtitle">Proyectos personales y prácticas académicas.</p>
+
+          <div class="mb-4">
+            <button class="filter-button active" data-filter="todos">Todos</button>
+            <button class="filter-button" data-filter="web">Web</button>
+            <button class="filter-button" data-filter="aplicaciones">Aplicaciones</button>
+            <button class="filter-button" data-filter="academico">Académicos</button>
+          </div>
+        </div>
+
+        <div class="row g-4" id="projectGrid">
+          <!-- PROYECTO 1 -->
+          <div class="col-md-6 col-lg-4 project-item" data-category="web">
+            <article class="glass-card project-card">
+              <img
+                class="project-image"
+                src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=900&q=80"
+                alt="Ilustración inspirada en el arte anime"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/900x500/17132b/35e7d4?text=KIMETSU+NO+MIRAI';">
+
+              <div class="project-content">
+                <h3>KIMETSU NO MIRAI</h3>
+                <p>
+                  Proyecto web inspirado en el universo anime, con una
+                  presentación visual temática y navegación por sus secciones.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">HTML</span>
+                  <span class="project-tag">CSS</span>
+                  <span class="project-tag">JavaScript</span>
+                  <span class="project-tag">Diseño web</span>
+                </div>
+                <div class="project-actions">
+                  <a href="https://yeelizaj-pixel.github.io/KIMETSU-NO-MIRAII/index.html"
+                    target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-box-arrow-up-right"></i> Ver proyecto
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- PROYECTO 2 -->
+          <div class="col-md-6 col-lg-4 project-item" data-category="aplicaciones">
+            <article class="glass-card project-card">
+              <img
+                class="project-image"
+                src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=900&q=80"
+                alt="Código de programación en una pantalla"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/900x500/17132b/35e7d4?text=NET+MAUI';">
+
+              <div class="project-content">
+                <h3>Prácticas con .NET MAUI</h3>
+                <p>
+                  Ejercicios académicos para aprender C#, interfaces XAML,
+                  variables, tipos de datos, condiciones y validación de formularios.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">C#</span>
+                  <span class="project-tag">.NET MAUI</span>
+                  <span class="project-tag">XAML</span>
+                  <span class="project-tag">Académico</span>
+                </div>
+                <div class="project-actions">
+                  <a href="#contacto">
+                    <i class="bi bi-info-circle"></i> Consultar información
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- PROYECTO 3 -->
+          <div class="col-md-6 col-lg-4 project-item" data-category="academico">
+            <article class="glass-card project-card">
+              <img
+                class="project-image"
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"
+                alt="Gráficos y análisis de información financiera"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/900x500/17132b/35e7d4?text=SIMULACION+FINANCIERA';">
+
+              <div class="project-content">
+                <h3>Simulación financiera</h3>
+                <p>
+                  Práctica académica de matemática financiera que incluye
+                  tasas efectivas, comparación de alternativas y análisis de resultados.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">Finanzas</span>
+                  <span class="project-tag">Cálculos</span>
+                  <span class="project-tag">Simulación</span>
+                  <span class="project-tag">Académico</span>
+                </div>
+                <div class="project-actions">
+                  <a href="#contacto">
+                    <i class="bi bi-info-circle"></i> Consultar información
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section class="section" id="experiencia">
+      <div class="container">
+        <div class="text-center">
+          <div class="eyebrow">MI TRAYECTORIA</div>
+          <h2 class="section-heading">Formación y <span>experiencia</span></h2>
+          <p class="section-subtitle">Mi camino de aprendizaje en tecnología.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="glass-card experience-card">
+              <div class="experience-date">
+                <i class="bi bi-mortarboard"></i> Formación académica
+              </div>
+              <h3>Ingeniería en Sistemas</h3>
+              <p>
+                Formación universitaria en áreas relacionadas con la
+                informática, programación, sistemas operativos y tecnología.
+              </p>
+              <ul>
+                <li>Fundamentos de programación.</li>
+                <li>Desarrollo de páginas y aplicaciones.</li>
+                <li>Conceptos de sistemas operativos y redes.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="glass-card experience-card">
+              <div class="experience-date">
+                <i class="bi bi-laptop"></i> Proyectos prácticos
+              </div>
+              <h3>Aprendizaje mediante proyectos</h3>
+              <p>
+                Desarrollo de ejercicios y proyectos para aplicar los
+                conocimientos adquiridos en mis estudios.
+              </p>
+              <ul>
+                <li>Diseño y estructura de sitios web.</li>
+                <li>Prácticas de C# y .NET MAUI.</li>
+                <li>Publicación de proyectos con GitHub Pages.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="section" id="videos">
+      <div class="container">
+        <div class="text-center">
+          <div class="eyebrow">CONTENIDO MULTIMEDIA</div>
+          <h2 class="section-heading">Videos de <span>interés</span></h2>
+          <p class="section-subtitle">
+            Recursos audiovisuales relacionados con tecnología y programación.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card">
+              <div class="video-frame">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/UB1O30fR-EE"
+                  title="Introducción al desarrollo web"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen></iframe>
+              </div>
+              <div class="video-title">Introducción al desarrollo web</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card">
+              <div class="video-frame">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/hdI2bqOjy3c"
+                  title="Fundamentos de JavaScript"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen></iframe>
+              </div>
+              <div class="video-title">Fundamentos de JavaScript</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card">
+              <div class="video-frame">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/G3e-cpL7ofc"
+                  title="Aprendiendo HTML y CSS"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen></iframe>
+              </div>
+              <div class="video-title">Aprendiendo HTML y CSS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="text-center">
+          <div class="eyebrow">HABLEMOS</div>
+          <h2 class="section-heading">Ponte en <span>contacto</span></h2>
+          <p class="section-subtitle">
+            ¿Quieres conversar sobre tecnología o alguno de mis proyectos?
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-5">
+            <div class="glass-card">
+              <h3 class="h4 mb-4">Información de contacto</h3>
+
+              <div class="contact-line">
+                <div class="contact-icon"><i class="bi bi-person"></i></div>
+                <div>
+                  <strong>Nombre</strong>
+                  <span>Jashiel Jimenez</span>
+                </div>
+              </div>
+
+              <div class="contact-line">
+                <div class="contact-icon"><i class="bi bi-code-slash"></i></div>
+                <div>
+                  <strong>Área de interés</strong>
+                  <span>Programación y desarrollo web</span>
+                </div>
+              </div>
+
+              <div class="contact-line">
+                <div class="contact-icon"><i class="bi bi-globe"></i></div>
+                <div>
+                  <strong>Portafolio</strong>
+                  <span>NEXORA AI</span>
+                </div>
+              </div>
+
+              <p class="about-text">
+                También puedes encontrar mis proyectos publicados en GitHub.
+              </p>
+
+              <a class="social-link"
+                href="https://github.com/yeelizaj-pixel"
+                target="_blank" rel="noopener noreferrer"
+                aria-label="GitHub">
+                <i class="bi bi-github"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="glass-card">
+              <h3 class="h4 mb-4">Envíame un mensaje</h3>
+
+              <form id="contactForm">
+                <div class="mb-3">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input class="form-control" type="text" id="nombre"
+                    name="nombre" placeholder="Escribe tu nombre" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="correo" class="form-label">Correo electrónico</label>
+                  <input class="form-control" type="email" id="correo"
+                    name="correo" placeholder="tucorreo@ejemplo.com" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="asunto" class="form-label">Asunto</label>
+                  <input class="form-control" type="text" id="asunto"
+                    name="asunto" placeholder="¿Sobre qué deseas hablar?" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="mensaje" class="form-label">Mensaje</label>
+                  <textarea class="form-control" id="mensaje" name="mensaje"
+                    rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+                </div>
+
+                <button class="button-primary" type="submit">
+                  <i class="bi bi-envelope-paper"></i> Preparar mensaje
+                </button>
+
+                <p class="about-text mt-3 mb-0" id="formMessage" aria-live="polite">
+                  El formulario abrirá tu aplicación de correo. No envía mensajes automáticamente.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <div class="container">
+      <div class="footer-brand mb-2">NEXORA AI</div>
+      <p class="mb-2">Portafolio profesional de Jashiel Jimenez</p>
+      <small>
+        © <span id="currentYear"></span> · Creado para mostrar mi aprendizaje y mis proyectos.
+      </small>
+    </div>
+  </footer>
+
+  <a href="#inicio" class="back-top" aria-label="Volver al inicio">
+    <i class="bi bi-arrow-up"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // AÑO AUTOMÁTICO
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+    // CAMBIO ENTRE MODO OSCURO Y CLARO
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+
+    themeToggle.addEventListener("click", function () {
+      document.body.classList.toggle("light");
+
+      const lightMode = document.body.classList.contains("light");
+
+      themeIcon.className = lightMode
+        ? "bi bi-moon-stars-fill"
+        : "bi bi-sun-fill";
+
+      themeToggle.setAttribute(
+        "aria-label",
+        lightMode ? "Activar modo oscuro" : "Activar modo claro"
+      );
+    });
+
+    // FILTROS DE PROYECTOS
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const projectItems = document.querySelectorAll(".project-item");
+
+    filterButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        filterButtons.forEach(function (item) {
+          item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        const filter = button.dataset.filter;
+
+        projectItems.forEach(function (project) {
+          const category = project.dataset.category;
+
+          if (filter === "todos" || category === filter) {
+            project.classList.remove("hidden-project");
+          } else {
+            project.classList.add("hidden-project");
+          }
+        });
+      });
+    });
+
+    // CERRAR EL MENÚ MÓVIL AL SELECCIONAR UNA SECCIÓN
+    document.querySelectorAll("#menuPrincipal .nav-link").forEach(function (link) {
+      link.addEventListener("click", function () {
+        const menu = document.getElementById("menuPrincipal");
+
+        if (menu.classList.contains("show") && window.bootstrap) {
+          bootstrap.Collapse.getOrCreateInstance(menu).hide();
+        }
+      });
+    });
+
+    // FORMULARIO: PREPARA UN CORREO EN LA APLICACIÓN DEL USUARIO
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const correo = document.getElementById("correo").value.trim();
+      const asunto = document.getElementById("asunto").value.trim();
+      const mensaje = document.getElementById("mensaje").value.trim();
+      const status = document.getElementById("formMessage");
+
+      const cuerpo =
+        "Nombre: " + nombre + "\n" +
+        "Correo: " + correo + "\n\n" +
+        "Mensaje:\n" + mensaje;
+
+      const mailto =
+        "mailto:?subject=" + encodeURIComponent(asunto) +
+        "&body=" + encodeURIComponent(cuerpo);
+
+      status.textContent =
+        "Se intentará abrir tu aplicación de correo. Para recibir mensajes directamente, configura una dirección de correo en el formulario.";
+
+      window.location.href = mailto;
+    });
+
+    // FONDO ANIMADO TIPO MATRIX
+    (function () {
+      const canvas = document.getElementById("matrix");
+      const ctx = canvas.getContext("2d");
+
+      if (!ctx) return;
+
+      const characters = "01アイウエオカキクケコサシスセソタチツテト";
+      const fontSize = 14;
+      let columns = 0;
+      let drops = [];
+
+      function resizeCanvas() {
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+
+        canvas.width = window.innerWidth * ratio;
+        canvas.height = window.innerHeight * ratio;
+
+        canvas.style.width = window.innerWidth + "px";
+        canvas.style.height = window.innerHeight + "px";
+
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+        columns = Math.ceil(window.innerWidth / fontSize);
+        drops = Array.from(
+          { length: columns },
+          function () {
+            return Math.random() * -100;
+          }
+        );
+      }
+
+      function drawMatrix() {
+        ctx.fillStyle = "rgba(9, 9, 20, 0.12)";
+        ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+        ctx.font = fontSize + "px monospace";
+        ctx.fillStyle = "#35e7d4";
+
+        for (let i = 0; i < drops.length; i++) {
+          const character = characters.charAt(
+            Math.floor(Math.random() * characters.length)
+          );
+
+          ctx.fillText(character, i * fontSize, drops[i] * fontSize);
+
+          if (
+            drops[i] * fontSize > window.innerHeight &&
+            Math.random() > 0.975
+          ) {
+            drops[i] = 0;
+          }
+
+          drops[i] += 0.45;
+        }
+      }
+
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      let animationId;
+
+      function animate() {
+        drawMatrix();
+        animationId = window.requestAnimationFrame(animate);
+      }
+
+      // Reduce animation if the user prefers less motion.
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        animate();
+      } else {
+        ctx.fillStyle = "#090914";
+        ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+      }
+
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden && animationId) {
+          cancelAnimationFrame(animationId);
+        } else if (
+          !document.hidden &&
+          !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+          cancelAnimationFrame(animationId);
+          animate();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
